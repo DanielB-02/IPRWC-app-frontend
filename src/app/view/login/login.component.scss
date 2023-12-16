@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+  overflow: hidden;
+}
+
+.column {
+  flex: 0.35;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.login-form-input-field {
+  width: 100%;
+}
+
+.login-form-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 52px;
+}
+
+.login-form-submit-button {
+  height: 30px;
+  width: 40%;
+  margin-bottom: 30px;
+}
+
+.login-form-logo {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+  padding: 16px;
+}
+
+.mat-mdc-raised-button.mat-primary {
+  --mdc-protected-button-container-color: #e96453;
+}
+
+
