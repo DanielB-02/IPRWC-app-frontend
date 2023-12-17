@@ -29,9 +29,9 @@ export class UserStorageService {
   //   window.localStorage.setItem(USER, JSON.stringify(user));
   // }
   //
-  // static getUser(): any {
-  //   return JSON.parse(localStorage.getItem(USER));
-  // }
+  static getUser(): any {
+    return JSON.parse(localStorage.getItem(USER));
+  }
   //
   //
   // static getUserId(): string {
@@ -40,11 +40,11 @@ export class UserStorageService {
   //   return user.userId;
   // }
   //
-  // static getUserRole(): string {
-  //   const user = this.getUser();
-  //   if ( user == null){ return ''; }
-  //   return user.role;
-  // }
+  static getUserRole(): string {
+    const user = this.getUser();
+    if ( user == null){ return ''; }
+    return user.role;
+  }
 
   // static isAdminLoggedIn(): boolean {
   //   if ( this.getToken() === null){
@@ -58,9 +58,8 @@ export class UserStorageService {
     if ( this.getToken() === null){
       return false;
     }
-    // const role: string = this.getUserRole();
-    // return role == 'CUSTOMER';
-    return true;
+    const role: string = this.getUserRole();
+    return role == 'CUSTOMER';
   }
 
   public signOut() {

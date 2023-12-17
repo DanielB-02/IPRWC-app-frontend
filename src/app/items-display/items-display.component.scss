@@ -1,0 +1,29 @@
+.webshop {
+  display: flex;
+  flex-wrap: wrap;
+  //justify-content: space-around;
+}
+
+.row {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.item {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  width: calc(33.33% - 20px);
+}
+
+.item img {
+  max-width: 100%;
+  height: auto;
+}
+
+.price {
+  color: green;
+  font-weight: bold;
+}

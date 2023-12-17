@@ -1,0 +1,9 @@
+<div class="webshop">
+    <div *ngFor="let item of items" class="item">
+        <img [src]="item.imageUrl" alt="{{ item.name }}" />
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.description }}</p>
+        <p class="price">{{ item.price | currency: 'USD':true }}</p>
+        <button (click)="addToCart(item)">Add to Cart</button>
+    </div>
+</div>

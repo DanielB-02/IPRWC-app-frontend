@@ -13,6 +13,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {ItemsDisplayComponent} from "./items-display/items-display.component";
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
+    ItemsDisplayComponent,
 
   ],
   // providers: [
