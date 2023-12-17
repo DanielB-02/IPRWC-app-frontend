@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import {AppRoutingModule} from "./app.routes";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-// import {ApiHeadersInterceptor} from "./conf/http-interceptor";
+import {ApiHeadersInterceptor} from "./conf/http-interceptor";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LoginComponent} from "./view/login/login.component";
 import {MatCardModule} from "@angular/material/card";
@@ -13,7 +13,8 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
-import {ItemsDisplayComponent} from "./items-display/items-display.component";
+import {ItemsDisplayComponent} from "./view/items-display/items-display.component";
+import {MainViewComponent} from "./view/main-view/main-view.component";
 
 @NgModule({
   declarations: [
@@ -34,16 +35,17 @@ import {ItemsDisplayComponent} from "./items-display/items-display.component";
     MatButtonModule,
     MatToolbarModule,
     ItemsDisplayComponent,
+    MainViewComponent,
 
   ],
-  // providers: [
-  //   LoginComponent,
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: ApiHeadersInterceptor,
-  //     multi: true,
-  //   }
-  // ],
+  providers: [
+    LoginComponent,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ApiHeadersInterceptor,
+      multi: true,
+    }
+  ],
 
   bootstrap: [AppComponent]
 })

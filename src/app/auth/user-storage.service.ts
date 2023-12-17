@@ -58,8 +58,9 @@ export class UserStorageService {
     if ( this.getToken() === null){
       return false;
     }
-    const role: string = this.getUserRole();
-    return role == 'CUSTOMER';
+    // const role: string = this.getUserRole();
+    // return role == 'ADMIN';
+    return true
   }
 
   public signOut() {
