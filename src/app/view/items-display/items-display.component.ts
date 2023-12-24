@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {CurrencyPipe, NgForOf} from "@angular/common";
+import {ShopItemService} from "../../services/shop-item.service";
+import {ShopItem} from "../../model/shop-item";
 
 @Component({
   selector: 'app-items-display',
@@ -12,81 +14,22 @@ import {CurrencyPipe, NgForOf} from "@angular/common";
   styleUrl: './items-display.component.scss'
 })
 export class ItemsDisplayComponent {
-  items = [
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    {
-      name: 'Item 1',
-      description: 'Description for item 1',
-      price: 19.99,
-      imageUrl: 'path/to/image1.jpg'
-    },
-    // Repeat the above block for items 2 to 9
-  ];
+  shopItems: ShopItem[];
+
+  constructor(private shopItemService: ShopItemService) {
+  }
+
+  ngOnInit() {
+    this.loadShopItems()
+  }
+
+  private loadShopItems() {
+    // return this.shopItemService.getShopItems();
+    this.shopItemService.getShopItems()
+      .subscribe(shopItems => {
+        this.shopItems = shopItems;
+    })
+  }
 
   addToCart(item: any): void {
     // Implement your add to cart logic here
