@@ -1,9 +1,17 @@
 <div class="webshop">
     <div *ngFor="let item of shopItems" class="item">
         <img [src]="item.imageUrl" alt="{{ item.name }}" />
-        <h3>{{ item.name }}</h3>
+        <h3>{{ item.name }} ingelogd: {{ UserStorageService.isCustomerLoggedIn() }}</h3>
         <p>{{ item.description }}</p>
         <p class="price">{{ item.price | currency: 'USD':true }}</p>
-        <button (click)="addToCart(item)">Add to Cart</button>
+        <div *ngIf=UserStorageService.isCustomerLoggedIn()>
+          <button (click)="addToCart(item)">Add to Cart</button>
+        </div>
+      <div *ngIf=false>
+        -A-
+      </div>
+      <div *ngIf="false">
+        -B-
+      </div>
     </div>
 </div>
