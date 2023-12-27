@@ -11,7 +11,9 @@ export class ApiHeadersInterceptor implements HttpInterceptor {
     });
 
     if (req.url.indexOf('/auth/') < 0) {
-      headers = headers.append('Authorization', 'Bearer ' + UserStorageService.getToken());
+      if (UserStorageService.isCustomerLoggedIn()) {
+        headers = headers.append('Authorization', 'Bearer ' + UserStorageService.getToken());
+      }
     }
 
     const modifiedReq = req.clone({

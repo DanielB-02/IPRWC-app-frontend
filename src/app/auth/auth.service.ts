@@ -89,10 +89,13 @@ export class AuthService {
   }
 
   private createAuthorizationHeader(): HttpHeaders {
-    return new HttpHeaders().set(
-      'Authorization',
-      'Bearer ' + UserStorageService.getToken()
-    );
+    if (UserStorageService.isCustomerLoggedIn()) {
+      return new HttpHeaders().set(
+        'Authorization',
+        'Bearer ' + UserStorageService.getToken()
+      );
+    }
+    return new HttpHeaders();
   }
 
   private log(message: string): void {

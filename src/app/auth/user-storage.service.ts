@@ -54,7 +54,7 @@ export class UserStorageService {
   //   return role == 'ADMIN';
   // }
 
-  static isCustomerLoggedIn(): boolean {
+  public static isCustomerLoggedIn(): boolean {
     if ( this.getToken() === null){
       return false;
     }
