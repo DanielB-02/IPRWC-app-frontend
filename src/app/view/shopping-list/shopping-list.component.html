@@ -1,0 +1,7 @@
+<div class="shopping-list">
+  <div *ngFor="let shoppinglistItem of shoppingListItems" class="shopping-list-item">
+    <img [src]="shoppinglistItem.shopItem.imageUrl" alt="{{ shoppinglistItem.shopItem.name }}" />
+    <p>{{ shoppinglistItem.shopItem.description }}</p>
+    <p class="price">{{ shoppinglistItem.shopItem.price | currency: 'USD':true }}</p>
+  </div>
+</div>

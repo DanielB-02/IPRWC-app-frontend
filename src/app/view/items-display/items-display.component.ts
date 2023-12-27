@@ -3,6 +3,8 @@ import {CurrencyPipe, NgForOf, NgIf} from "@angular/common";
 import {ShopItemService} from "../../services/shop-item.service";
 import {ShopItem} from "../../model/shop-item";
 import {UserStorageService} from "../../auth/user-storage.service";
+import {ShoppingListService} from "../../services/shopping-list.service";
+import {ShoppingListItem} from "../../model/shopping-list-item";
 
 @Component({
   selector: 'app-items-display',
@@ -17,9 +19,11 @@ import {UserStorageService} from "../../auth/user-storage.service";
 })
 export class ItemsDisplayComponent {
   shopItems: ShopItem[];
+  shoppingListItem: ShoppingListItem;
 
   constructor(
-    private shopItemService: ShopItemService) {
+    private shopItemService: ShopItemService,
+    private shoppingListService: ShoppingListService) {
   }
 
   ngOnInit() {
@@ -40,8 +44,13 @@ export class ItemsDisplayComponent {
   }
 
   addToCart(item: any): void {
-    // Implement your add to cart logic here
     console.log('Added to cart:', item);
+    this.shoppingListService.addItemToOrder(item).subscribe(() => {
+      console.log('call executed');
+    });
+    // this.shoppingListService.addItemToOrder(item).subscribe(() => {
+    //   console.log('call executed');
+    // });
   }
 
   protected readonly UserStorageService = UserStorageService;

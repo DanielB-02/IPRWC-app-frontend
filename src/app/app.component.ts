@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {ShoppingListComponent} from "./view/shopping-list/shopping-list.component";
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,6 @@ import {Component} from '@angular/core';
 })
 
 export class AppComponent {
+
 
 }
