@@ -26,4 +26,9 @@ export class ShoppingListService {
     const url = `${this.shoppingListUrl}`;
     return this.http.post<void>(url+ '/product/' + product.id, '');
   }
+
+  confirmOrder() {
+    const url = `${this.shoppingListUrl}`;
+    return this.http.put<ShoppingListItem[]>(url, '');
+  }
 }
