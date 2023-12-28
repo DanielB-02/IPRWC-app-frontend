@@ -4,4 +4,8 @@
     <p>{{ shoppinglistItem.shopItem.description }}</p>
     <p class="price">{{ shoppinglistItem.shopItem.price | currency: 'USD':true }}</p>
   </div>
+  <div *ngIf="shoppingListItems.length != 0" class="order-submit">
+    <button class="order-submit-button" mat-raised-button color="primary" type="submit"
+            (click)="onOrderSubmit()">Confirm Order</button>
+  </div>
 </div>

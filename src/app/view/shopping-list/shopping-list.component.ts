@@ -5,6 +5,8 @@ import {ShopItem} from "../../model/shop-item";
 import {ShoppingListItem} from "../../model/shopping-list-item";
 import {ShopItemService} from "../../services/shop-item.service";
 import {ShoppingListService} from "../../services/shopping-list.service";
+import {MatButtonModule} from "@angular/material/button";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-shopping-list',
@@ -12,7 +14,8 @@ import {ShoppingListService} from "../../services/shopping-list.service";
   imports: [
     CurrencyPipe,
     NgForOf,
-    NgIf
+    NgIf,
+    MatButtonModule
   ],
   templateUrl: './shopping-list.component.html',
   styleUrl: './shopping-list.component.scss'
@@ -21,7 +24,9 @@ export class ShoppingListComponent {
   shoppingListItems: ShoppingListItem[];
 
   constructor(
-    private shoppingListService: ShoppingListService) {
+    private shoppingListService: ShoppingListService,
+    private snackBar: MatSnackBar,
+    ) {
   }
 
   ngOnInit() {
@@ -34,6 +39,16 @@ export class ShoppingListComponent {
       this.shoppingListItems = items;
     })
   }
+  onOrderSubmit(): void {
+    this.shoppingListService.confirmOrder().subscribe(() => {
+      this.snackBar.open('Order Confirmed', 'MESSAGE', { duration: 5000 });
+      this.loadShoppingListItems();
+    });
+  }
+
+  // disableOrderButton() {
+  //
+  // }
 
 
   protected readonly UserStorageService = UserStorageService;

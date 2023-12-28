@@ -28,3 +28,15 @@
   color: green;
   font-weight: bold;
 }
+
+.order-submit {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+.order-submit-button {
+  cursor: pointer;
+}
