@@ -27,8 +27,15 @@ export class ShoppingListService {
     return this.http.post<void>(url+ '/product/' + product.id, '');
   }
 
+  deleteItemFromOrder(product: ShopItem): Observable<void> {
+    const url = `${this.shoppingListUrl}`;
+    return this.http.delete<void>(url+ '/product/' + product.id);
+  }
+
   confirmOrder() {
     const url = `${this.shoppingListUrl}`;
     return this.http.put<ShoppingListItem[]>(url, '');
   }
+
+
 }

@@ -3,6 +3,9 @@
     <img [src]="shoppinglistItem.shopItem.imageUrl" alt="{{ shoppinglistItem.shopItem.name }}" />
     <p>{{ shoppinglistItem.shopItem.description }}</p>
     <p class="price">{{ shoppinglistItem.shopItem.price | currency: 'USD':true }}</p>
+    <div>
+      <button (click)="removeFromCart(shoppinglistItem.shopItem)">Remove from Cart</button>
+    </div>
   </div>
   <div *ngIf="shoppingListItems.length != 0" class="order-submit">
     <button class="order-submit-button" mat-raised-button color="primary" type="submit"
