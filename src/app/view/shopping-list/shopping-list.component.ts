@@ -39,6 +39,14 @@ export class ShoppingListComponent {
       this.shoppingListItems = items;
     })
   }
+
+  removeFromCart(item: ShopItem): void {
+    this.shoppingListService.deleteItemFromOrder(item).subscribe(() => {
+      this.snackBar.open('Product ' + item.name + ' deleted', 'MESSAGE', { duration: 2000 });
+      this.loadShoppingListItems();
+    });
+  }
+
   onOrderSubmit(): void {
     this.shoppingListService.confirmOrder().subscribe(() => {
       this.snackBar.open('Order Confirmed', 'MESSAGE', { duration: 5000 });

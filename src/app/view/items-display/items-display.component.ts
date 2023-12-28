@@ -5,6 +5,7 @@ import {ShopItem} from "../../model/shop-item";
 import {UserStorageService} from "../../auth/user-storage.service";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ShoppingListItem} from "../../model/shopping-list-item";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-items-display',
@@ -22,6 +23,7 @@ export class ItemsDisplayComponent {
   shoppingListItem: ShoppingListItem;
 
   constructor(
+    private snackBar: MatSnackBar,
     private shopItemService: ShopItemService,
     private shoppingListService: ShoppingListService) {
   }
@@ -44,13 +46,9 @@ export class ItemsDisplayComponent {
   }
 
   addToCart(item: any): void {
-    console.log('Added to cart:', item);
     this.shoppingListService.addItemToOrder(item).subscribe(() => {
-      console.log('call executed');
+      this.snackBar.open('Product ' + item.name + ' Added', 'MESSAGE', { duration: 2000 });
     });
-    // this.shoppingListService.addItemToOrder(item).subscribe(() => {
-    //   console.log('call executed');
-    // });
   }
 
   protected readonly UserStorageService = UserStorageService;
