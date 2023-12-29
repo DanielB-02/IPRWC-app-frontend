@@ -6,6 +6,7 @@ import {UserStorageService} from "../../auth/user-storage.service";
 import {ShoppingListService} from "../../services/shopping-list.service";
 import {ShoppingListItem} from "../../model/shopping-list-item";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatButtonModule} from "@angular/material/button";
 
 @Component({
   selector: 'app-items-display',
@@ -13,7 +14,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   imports: [
     CurrencyPipe,
     NgForOf,
-    NgIf
+    NgIf,
+    MatButtonModule
   ],
   templateUrl: './items-display.component.html',
   styleUrl: './items-display.component.scss'
