@@ -1,14 +1,18 @@
 <div class="shopping-list">
   <div *ngFor="let shoppinglistItem of shoppingListItems" class="shopping-list-item">
     <img [src]="shoppinglistItem.shopItem.imageUrl" alt="{{ shoppinglistItem.shopItem.name }}" />
-    <p>{{ shoppinglistItem.shopItem.description }}</p>
-    <p class="price">{{ shoppinglistItem.shopItem.price | currency: 'USD':true }}</p>
+    <h1>{{ shoppinglistItem.shopItem.name }}</h1>
+    <h2>{{ shoppinglistItem.shopItem.description }}</h2>
+    <h2 class="price">{{ shoppinglistItem.shopItem.price | currency: 'USD':true }}</h2>
     <div>
-      <button (click)="removeFromCart(shoppinglistItem.shopItem)">Remove from Cart</button>
+      <button mat-raised-button color="primary" type="submit"
+              (click)="removeFromCart(shoppinglistItem.shopItem)">Remove from Cart</button>
     </div>
   </div>
+
   <div *ngIf="shoppingListItems.length != 0" class="order-submit">
     <button class="order-submit-button" mat-raised-button color="primary" type="submit"
             (click)="onOrderSubmit()">Confirm Order</button>
   </div>
+
 </div>

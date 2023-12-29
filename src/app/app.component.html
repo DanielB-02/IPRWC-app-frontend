@@ -2,7 +2,9 @@
   <span class="navbar-brand">Guitar Shop</span>
   <span class="spacer"></span>
   <button mat-button routerLink="/main-view" routerLinkActive="active">Home</button>
-  <button mat-button routerLink="/shopping-list" routerLinkActive="active">Cart</button>
+  <div *ngIf=UserStorageService.isCustomerLoggedIn()>
+    <button mat-button routerLink="/shopping-list" routerLinkActive="active">Cart</button>
+  </div>
   <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
 </mat-toolbar>
 <router-outlet></router-outlet>
