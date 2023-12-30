@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+  overflow: hidden;
+}
+
+.column {
+  flex: 0.35;
+}
+
+.mat-mdc-card-title {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-left: 16px;
+  margin-right: 16px;
+  justify-content: center;
+}
+
+
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.button-container button {
+  width: 48%;
+}
+
+.signup-form-input-field {
+  width: 100%;
+}
+
+.signup-form-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 52px;
+}
+
+.signup-form-submit-button {
+  height: 40px;
+  width: 40%;
+  margin-bottom: 30px;
+}
+
+

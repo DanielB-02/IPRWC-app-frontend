@@ -15,11 +15,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {ItemsDisplayComponent} from "./view/items-display/items-display.component";
 import {MainViewComponent} from "./view/main-view/main-view.component";
+import {AdminPortalComponent} from "./view/admin-portal/admin-portal.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    AdminPortalComponent
   ],
 
   imports: [
@@ -34,9 +36,6 @@ import {MainViewComponent} from "./view/main-view/main-view.component";
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    ItemsDisplayComponent,
-    MainViewComponent,
-
   ],
   providers: [
     LoginComponent,
