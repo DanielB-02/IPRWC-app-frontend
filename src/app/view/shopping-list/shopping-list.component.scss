@@ -19,8 +19,8 @@
   color: white;
 }
 
-.item img {
-  max-width: 100%;
+.shopping-list-item img {
+  max-width: 80%;
   height: auto;
 }
 
@@ -30,11 +30,9 @@
 }
 
 .order-submit {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 20px; /* Adjust the margin as needed */
+  width: 100%; /* Take up the full width of the container */
+  text-align: center;
+  //margin-top: 20px; /* Adjust the margin as needed */
 }
 
 .order-submit-button {
