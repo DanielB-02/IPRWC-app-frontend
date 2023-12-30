@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap, map, Observable, catchError, throwError, of } from 'rxjs';
+import {tap, map, Observable, catchError, throwError, of, BehaviorSubject, async} from 'rxjs';
 import {UserStorageService} from "./user-storage.service";
 import {environment} from "../environments/environment";
+import {User} from "../model/user";
 
 const BASIC_URL = environment['BASIC_URL'];
 export const AUTH_HEADER = 'authorization';
@@ -12,11 +13,24 @@ export const AUTH_HEADER = 'authorization';
 })
 export class AuthService {
   session: any;
+  private isAdminSubject = new BehaviorSubject<boolean>(false);
+  isAdmin$: Observable<boolean> = this.isAdminSubject.asObservable();
+  private isLoggedInSubject = new BehaviorSubject<boolean>(false);
+  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
   constructor(
     private http: HttpClient,
     private userStorageService: UserStorageService
-  ) { }
+  ) {
+    this.checkAdminRights();
+  }
+
+  private checkAdminRights(): void {
+    this.myCredentials().subscribe(user => {
+      this.isLoggedInSubject.next(user !== null);
+      this.isAdminSubject.next(user !== null ? user.role === 'ADMIN' : false);
+    });
+  }
 
   login(email: string, password: string): any {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -28,8 +42,10 @@ export class AuthService {
         const tokenResponse = res.body;
         if (tokenResponse) {
           this.userStorageService.saveToken(tokenResponse["token"]);
+          this.checkAdminRights();
           return true;
         }
+        this.checkAdminRights();
         return false;
       }),
       catchError((error) => {
@@ -42,11 +58,15 @@ export class AuthService {
   logout() {
     this.userStorageService.signOut();
     this.session = undefined;
-    // redirect to landing page
+    this.checkAdminRights();
   }
 
-  register(signupRequest: any): Observable<any> {
-    return this.http.post(BASIC_URL + "product", signupRequest);
+  register(addProductRequest: any): Observable<any> {
+    return this.http.post(BASIC_URL + "product", addProductRequest);
+  }
+
+  myCredentials(): Observable<User> {
+    return this.http.get<User>(BASIC_URL + "public/user/my");
   }
 
   // getUserById(): Observable<any> {

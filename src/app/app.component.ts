@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
-import {ShoppingListComponent} from "./view/shopping-list/shopping-list.component";
 import {UserStorageService} from "./auth/user-storage.service";
+import {AuthService} from "./auth/auth.service";
+import {Router} from "@angular/router";
+import {BehaviorSubject, Observable, Subscriber} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -9,7 +11,19 @@ import {UserStorageService} from "./auth/user-storage.service";
 })
 
 export class AppComponent {
+  isAdmin$ = this.authService.isAdmin$;
+  isLoggedIn$ = this.authService.isLoggedIn$;
 
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {
+  }
+
+  logoutClicked() {
+    // this.router.navigateByUrl('/login');
+    this.authService.logout()
+  }
 
   protected readonly UserStorageService = UserStorageService;
 }

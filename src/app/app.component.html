@@ -1,11 +1,21 @@
 <mat-toolbar color="primary" class="navbar">
   <span class="navbar-brand">Guitar Shop</span>
   <span class="spacer"></span>
+<!--  <span> isLoggedIn$: {{ isLoggedIn$ | async }}</span>-->
+<!--  <span> isAdmin$: {{ isAdmin$ | async }}</span>-->
   <button mat-button routerLink="/main-view" routerLinkActive="active">Home</button>
-  <div *ngIf=UserStorageService.isCustomerLoggedIn()>
-    <button mat-button routerLink="/admin-portal" routerLinkActive="active">Admin</button>
+  <div *ngIf="isLoggedIn$ | async">
     <button mat-button routerLink="/shopping-list" routerLinkActive="active">Cart</button>
   </div>
-  <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+  <div *ngIf="isAdmin$ | async">
+    <button mat-button routerLink="/admin-portal" routerLinkActive="active">Admin</button>
+  </div>
+  <div *ngIf="!(isLoggedIn$ | async)">
+    <button mat-button routerLink="/login" routerLinkActive="active">Login</button>
+  </div>
+  <div *ngIf="(isLoggedIn$ | async)" (click)="logoutClicked()">
+    <button mat-button routerLink="/main-view" routerLinkActive="active">Logout</button>
+  </div>
+
 </mat-toolbar>
 <router-outlet></router-outlet>

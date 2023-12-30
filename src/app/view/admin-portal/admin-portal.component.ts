@@ -27,6 +27,7 @@ export class AdminPortalComponent {
       name: [null, [Validators.required]],
       description: [null, [ Validators.required]],
       price: [null, [Validators.required]],
+      imageUrl: [null, [Validators.required]]
     });
   }
 
